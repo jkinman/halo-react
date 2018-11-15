@@ -1,0 +1,19 @@
+{
+  "name": "halo-react",
+  "version": "0.0.0",
+  "description": "React component for displaying the Halo visialization",
+  "main": "index.js",
+  "repository": "https://github.com/jkinman/halo-react.git",
+  "author": "Joel Kinman <joel.kinman@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}
