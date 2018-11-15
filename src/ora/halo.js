@@ -1,7 +1,7 @@
-'use strict';
-
 import React from 'react';
+import PropTypes from 'prop-types';
 
+//styles
 import './halo.scss'
 
 class HaloComponent extends React.Component {
@@ -12,7 +12,7 @@ class HaloComponent extends React.Component {
     this.state = {
       haloResponse: null,
       oraId: 0,
-      oraSize: this.props.width,
+      size: this.props.width,
       ora:{
         app: 1,
         id: 0,
@@ -41,7 +41,7 @@ class HaloComponent extends React.Component {
       id: 0,
     }
     // window.addEventListener('resize', this.updateHalo.bind( this ), false);
-    fetch( `${this.props.oraUrl}/halo`, {
+    fetch( `${this.props.endpoint}/halo`, {
       method: 'POST',
       mode: 'cors',
       cache: 'no-cache',
@@ -55,7 +55,7 @@ class HaloComponent extends React.Component {
     })
     .then( (res) => {
       const haloResponse = res.json().then((body) => {
-        this.setState({haloResponse:body, oraId: body.id }, () => console.log(this.state))
+        this.setState({haloResponse:body, oraId: body.id } )
       })
     })
     .catch( console.error)
@@ -78,7 +78,7 @@ class HaloComponent extends React.Component {
       app: 1000401
     };
 
-    fetch( `${this.props.oraUrl}/halo/${this.state.oraId}`, {
+    fetch( `${this.props.endpoint}/halo/${this.state.oraId}`, {
       method: 'PUT',
       mode: 'cors',
       cache: 'no-cache',
@@ -96,42 +96,44 @@ class HaloComponent extends React.Component {
       })
     })
     .catch( console.error)
-
-    // $.ajax({
-    //     type: 'PUT',
-    //     url: `${this.props.oraUrl}/halo/${this.state.oraId}`,
-    //     data: JSON.stringify( body ),
-    //     cache: false,
-    //     // dataType: 'json',
-    //     // context: this,
-    //     success: (data) => {
-    //       this.setState( {oraId: data.id, ora: data} );
-    //     },
-    //     error: () => {}
-    //   });
     }
   }
 
   render() {
     return (
       <div className="halo halo-component">
-
         <iframe
           id={this.state.oraId}
           className='halo iframe'
-          width={this.props.oraSize}
-          height={this.props.oraSize}
-          src={`http://sandbox.ora.me/embed?id=${this.state.oraId}&size=${this.state.oraSize}&radiant=${this.props.radiant}&background=${this.props.background}&core=${this.props.core}&glow=${this.props.glow}&solid=${this.props.solid}&tilt=${this.props.tilt}&scale=${this.props.scale}`}
+          width={this.props.size}
+          height={this.props.size}
+          src={`http://sandbox.ora.me/embed?id=${this.state.oraId}&size=${this.state.size}&radiant=${this.props.radiant}&background=${this.props.background}&core=${this.props.core}&glow=${this.props.glow}&solid=${this.props.solid}&tilt=${this.props.tilt}&scale=${this.props.scale}`}
         ></iframe>
       </div>
     );
   }
 }
 
-HaloComponent.displayName = 'SharedVisionPaletteHaloComponent';
+HaloComponent.propTypes = {
+  title: PropTypes.string,
+  size: PropTypes.number,
+  endpoint: PropTypes.string,
+  vertices: PropTypes.shape({
+    size: PropTypes.number,
+    speed: PropTypes.number,
+    brightness: PropTypes.number,
+    complexity: PropTypes.number,
+    color: PropTypes.number,
+    wobble: PropTypes.number,
+    colorCenter: PropTypes.number,
+    colorCenterRatio: PropTypes.number,
+    highlightRing: PropTypes.number,
+  })
+};
+
 HaloComponent.defaultProps = {
-  oraUrl: 'http://iq.ora.me/api',
-  oraSize: 600,
+  endpoint: 'http://iq.ora.me/api',
+  size: 600,
   oraId: 10120888,
   radiant: false,
   background: '000000',
