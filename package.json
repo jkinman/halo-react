@@ -1,6 +1,6 @@
 {
   "name": "halo-react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "React component for displaying the Halo visialization",
   "main": "index.js",
   "repository": "https://github.com/jkinman/halo-react.git",
@@ -14,6 +14,7 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.6.3"
   }
 }
