@@ -26,7 +26,7 @@ class HaloComponent extends React.Component {
           wobble: 0.5,
           colorCenter: 0.5,
           colorCenterRatio:0.25,
-          highlightRing:0.0
+          highlightRing:0.0,
         }
       }
     };
@@ -100,6 +100,7 @@ class HaloComponent extends React.Component {
   }
 
   render() {
+
     return (
       <div className="halo halo-component">
         <iframe
@@ -107,7 +108,7 @@ class HaloComponent extends React.Component {
           className='halo iframe'
           width={this.props.size}
           height={this.props.size}
-          src={`http://sandbox.ora.me/embed?id=${this.state.oraId}&size=${this.state.size}&radiant=${this.props.radiant}&background=${this.props.background}&core=${this.props.core}&glow=${this.props.glow}&solid=${this.props.solid}&tilt=${this.props.tilt}&scale=${this.props.scale}`}
+          src={`http://sandbox.ora.me/embed?id=${this.state.oraId}&size=${this.props.size}&radiant=${this.props.radiant}&background=${this.props.background}&core=${this.props.core}&glow=${this.props.glow}&solid=${this.props.solid}&tilt=${this.props.tilt}&scale=${this.props.scale}`}
         ></iframe>
       </div>
     );
@@ -118,6 +119,7 @@ HaloComponent.propTypes = {
   title: PropTypes.string,
   size: PropTypes.number,
   endpoint: PropTypes.string,
+  id: PropTypes.string,
   vertices: PropTypes.shape({
     size: PropTypes.number,
     speed: PropTypes.number,
@@ -134,7 +136,7 @@ HaloComponent.propTypes = {
 HaloComponent.defaultProps = {
   endpoint: 'http://iq.ora.me/api',
   size: 600,
-  oraId: 10120888,
+  id: 10120888,
   radiant: false,
   background: '000000',
   core: 0.20,
