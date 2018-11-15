@@ -1,6 +1,6 @@
 {
   "name": "halo-react",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "React component for displaying the Halo visialization",
   "main": "index.js",
   "repository": "https://github.com/jkinman/halo-react.git",
@@ -10,8 +10,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "babel src -d build",
-    "prepare": "yarn run build",
-    "publish": "npm publish"
+    "prepare": "yarn run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",

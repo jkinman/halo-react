@@ -1,2 +1,5 @@
 .babelrc
+webpack.config.js
 /src
+/public
+yarn.lock
